@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Picturas</string>
+    <string name="picturas">Picturas</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="log_in">Log In</string>
+</resources>
