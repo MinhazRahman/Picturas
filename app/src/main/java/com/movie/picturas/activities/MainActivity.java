@@ -1,5 +1,6 @@
 package com.movie.picturas.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
@@ -11,12 +12,16 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.navigation.NavigationView;
 import com.movie.picturas.R;
 import com.movie.picturas.models.Post;
 import com.parse.FindCallback;
@@ -34,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1020;
 
+
+    BottomNavigationView bottomNavigationView;
     EditText etDescription;
     Button btnTakePicture;
     ImageView ivPostImage;
@@ -51,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         btnTakePicture = findViewById(R.id.btnTakePicture);
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         // Set click listener on Take Picture button
         btnTakePicture.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +90,31 @@ public class MainActivity extends AppCompatActivity {
                 // We also want to save the current user
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(description, currentUser, photoFile);
+            }
+        });
+
+        // set click listener on bottom navigation
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.itemHome:
+                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.itemSearch:
+                        Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.itemVideo:
+                        Toast.makeText(MainActivity.this, "Video", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.itemShop:
+                        Toast.makeText(MainActivity.this, "Shop", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.itemProfile:
+                        Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+                        return true;
+                    default: return true;
+                }
             }
         });
     }
