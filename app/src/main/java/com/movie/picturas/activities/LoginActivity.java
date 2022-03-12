@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.movie.picturas.R;
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText etUsername;
     EditText etPassword;
     Button btnLogin;
+    TextView tvSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        tvSignup = findViewById(R.id.tvSignup);
 
         // set onClickListener to the button
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +55,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // set OnClickListener to sign up button
+        tvSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchSignupActivity();
+            }
+        });
 
+
+    }
+
+    private void launchSignupActivity() {
+        Intent intent = new Intent(this, SignupActivity.class);
+        startActivity(intent);
     }
 
     private void loginUser(String username, String password) {
