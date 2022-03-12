@@ -8,6 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="instagram_black">#262626</color>
-    <color name="navy_blue">#0E68CE</color>
+    <color name="navy_blue">#458eff</color>
+    <color name="facebook_blue">#1877F2</color>
+    <color name="navy_blue2">#408BFF</color>
+    <color name="instagram_black">#0A0A08</color>
 </resources>
