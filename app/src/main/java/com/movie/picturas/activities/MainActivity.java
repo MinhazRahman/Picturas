@@ -112,7 +112,9 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.itemProfile:
                         Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+                        launchLogoutActivity();
                         return true;
+
                     default: return true;
                 }
             }
@@ -219,5 +221,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void launchLogoutActivity(){
+        // Navigate to logout activity
+        Intent intent = new Intent(this, LogoutActivity.class);
+        startActivity(intent);
     }
 }
