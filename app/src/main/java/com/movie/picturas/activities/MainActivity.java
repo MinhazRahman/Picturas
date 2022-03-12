@@ -1,4 +1,4 @@
-package com.movie.picturas;
+package com.movie.picturas.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.movie.picturas.R;
 import com.movie.picturas.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;

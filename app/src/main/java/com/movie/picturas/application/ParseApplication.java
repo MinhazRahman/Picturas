@@ -1,4 +1,4 @@
-package com.movie.picturas;
+package com.movie.picturas.application;
 
 import android.app.Application;
 
