@@ -15,6 +15,8 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
     public static final String TAG = "LoginActivity";
 
@@ -26,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         // If user already signed in then navigate to main activity
         if (ParseUser.getCurrentUser() != null){
