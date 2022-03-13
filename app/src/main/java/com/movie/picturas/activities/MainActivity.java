@@ -128,15 +128,15 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.smiReel:
                 Toast.makeText(getApplicationContext(),"Reel Selected",Toast.LENGTH_SHORT).show();
-                fragment = new PostStoryFragment();
+                fragment = new PostsFragment();
                 break;
             case R.id.miFavourite:
                 Toast.makeText(getApplicationContext(),"Favourite Selected",Toast.LENGTH_SHORT).show();
-                fragment = new PostStoryFragment();
+                fragment = new PostsFragment();
                 break;
             case R.id.miMessage:
                 Toast.makeText(getApplicationContext(),"Message Selected",Toast.LENGTH_SHORT).show();
-                fragment = new PostStoryFragment();
+                fragment = new PostsFragment();
                 break;
             default:
                 fragment = new PostsFragment();
