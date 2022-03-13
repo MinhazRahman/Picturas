@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlPostContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/instagram_black"
+    android:paddingTop="0dp"
+    android:layout_margin="8dp">
+
+    <ImageView
+        android:id="@+id/ivProfileImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@null"/>
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ivProfileImage"
+        android:text="@string/user_name"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:maxLength="18"
+        android:singleLine="true"
+        android:ellipsize="end"/>
+
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/ivProfileImage"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        android:gravity="center_vertical"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <RelativeLayout
+        android:id="@+id/llIconsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivImage"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="start">
+
+        <ImageView
+            android:id="@+id/ivLike"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:gravity="center"
+            android:focusable="true"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_favorite_border_24"
+            android:contentDescription="@null"/>
+
+        <ImageView
+            android:id="@+id/ivComments"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_toEndOf="@+id/ivLike"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            android:focusable="true"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_insert_comment"
+            android:contentDescription="@null"/>
+
+        <ImageView
+            android:id="@+id/ivShare"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_toEndOf="@+id/ivComments"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            android:focusable="true"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_share"
+            android:contentDescription="@null"/>
+
+        <ImageView
+            android:id="@+id/ivSave"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:focusable="true"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_save"
+            android:contentDescription="@null"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="all"
+        android:linksClickable="true"
+        android:textColorLink="@color/navy_blue"
+        android:layout_below="@id/llIconsContainer"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/white"
+        tools:text="This is a description" />
+
+</RelativeLayout>
