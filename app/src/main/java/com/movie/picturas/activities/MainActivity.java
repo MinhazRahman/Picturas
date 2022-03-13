@@ -29,6 +29,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import com.movie.picturas.R;
 import com.movie.picturas.fragments.PostStoryFragment;
+import com.movie.picturas.fragments.PostsFragment;
+import com.movie.picturas.fragments.ProfileFragment;
 import com.movie.picturas.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -72,26 +74,32 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment = null;
                 switch (item.getItemId()) {
                     case R.id.itemHome:
+                    default:
                         Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
-                        return true;
+                        fragment = new PostsFragment();
+                        break;
                     case R.id.itemSearch:
                         Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
-                        return true;
+                        fragment = new PostsFragment();
+                        break;
                     case R.id.itemVideo:
                         Toast.makeText(MainActivity.this, "Video", Toast.LENGTH_SHORT).show();
-                        return true;
+                        fragment = new PostsFragment();
+                        break;
                     case R.id.itemShop:
                         Toast.makeText(MainActivity.this, "Shop", Toast.LENGTH_SHORT).show();
-                        return true;
+                        fragment = new PostsFragment();
+                        break;
                     case R.id.itemProfile:
                         Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
-                        launchLogoutActivity();
-                        return true;
-
-                    default: return true;
+                        fragment = new ProfileFragment();
+                        break;
                 }
+                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+                return true;
             }
         });
 
@@ -127,9 +135,11 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new PostStoryFragment();
                 break;
             case R.id.miMessage:
-            default:
                 Toast.makeText(getApplicationContext(),"Message Selected",Toast.LENGTH_SHORT).show();
                 fragment = new PostStoryFragment();
+                break;
+            default:
+                fragment = new PostsFragment();
                 break;
         }
         fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
