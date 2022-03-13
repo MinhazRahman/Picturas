@@ -78,23 +78,18 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.itemHome:
                     default:
-                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
                         fragment = new PostsFragment();
                         break;
                     case R.id.itemSearch:
-                        Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
                         fragment = new PostsFragment();
                         break;
                     case R.id.itemVideo:
-                        Toast.makeText(MainActivity.this, "Video", Toast.LENGTH_SHORT).show();
                         fragment = new PostsFragment();
                         break;
                     case R.id.itemShop:
-                        Toast.makeText(MainActivity.this, "Shop", Toast.LENGTH_SHORT).show();
                         fragment = new PostsFragment();
                         break;
                     case R.id.itemProfile:
-                        Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
                         fragment = new ProfileFragment();
                         break;
                 }
