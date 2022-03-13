@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <item
         android:id="@+id/miAdd"
         android:icon="@drawable/ic_baseline_add_box_24"
         app:showAsAction="ifRoom"
         android:title="Add">
+
+        <!-- submenu -->
+        <menu>
+            <group
+                android:id="@+id/addSubmenu"
+                android:checkableBehavior="none"
+                android:visible="true"
+                android:menuCategory="container">
+                <item
+                    android:id="@+id/smiTakePhoto"
+                    android:icon="@drawable/ic_baseline_photo_camera_24"
+                    app:showAsAction="withText"
+                    android:title="@string/take_photo" />
+                <item
+                    android:id="@+id/smiReel"
+                    android:icon="@drawable/ic_baseline_video_library_24"
+                    app:showAsAction="withText"
+                    android:title="@string/reel" />
+
+            </group>
+        </menu>
     </item>
     <item
         android:id="@+id/miFavourite"

@@ -29,5 +29,6 @@
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">30sp</item>
         <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/blue_vinyl_regular</item>
     </style>
 </resources>

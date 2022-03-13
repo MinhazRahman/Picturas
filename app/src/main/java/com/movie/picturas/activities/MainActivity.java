@@ -139,6 +139,28 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.smiTakePhoto:
+                Toast.makeText(getApplicationContext(),"Take Photo Selected",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.smiReel:
+                Toast.makeText(getApplicationContext(),"Reel Selected",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.miFavourite:
+                Toast.makeText(getApplicationContext(),"Favourite Selected",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.miMessage:
+                Toast.makeText(getApplicationContext(),"Message Selected",Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     // Launch the Camera
     private void launchCamera() {
         // create Intent to take a picture and return control to the calling application

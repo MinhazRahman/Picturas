@@ -11,6 +11,5 @@
     app:title="@string/app_name"
     android:textSize = "20sp"
     android:background="@color/instagram_black"
-    android:theme="@style/ToolbarTheme"
     app:titleTextAppearance="@style/Toolbar.TitleText"
     app:menu="@menu/menu_main"/>
