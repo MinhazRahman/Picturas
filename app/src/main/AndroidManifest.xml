@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Picturas"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.PostStoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.LogoutActivity"
             android:exported="false" />
         <activity
