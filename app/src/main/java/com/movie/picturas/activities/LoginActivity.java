@@ -31,8 +31,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Objects.requireNonNull(getSupportActionBar()).hide();
-
         // If user already signed in then navigate to main activity
         if (ParseUser.getCurrentUser() != null){
             launchMainActivity();

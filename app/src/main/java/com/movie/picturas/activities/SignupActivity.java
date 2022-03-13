@@ -30,9 +30,6 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        // Hide the action bar
-        Objects.requireNonNull(getSupportActionBar()).hide();
-
         // find the views
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);

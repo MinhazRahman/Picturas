@@ -22,9 +22,6 @@ public class LogoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logout);
 
-        // Hide the action bar
-        Objects.requireNonNull(getSupportActionBar()).hide();
-
         // find views in the layout
         btnLogout = findViewById(R.id.btnLogout);
 
