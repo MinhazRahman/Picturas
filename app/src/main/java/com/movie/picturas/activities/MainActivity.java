@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -25,6 +28,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import com.movie.picturas.R;
+import com.movie.picturas.fragments.PostStoryFragment;
 import com.movie.picturas.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -43,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     BottomNavigationView bottomNavigationView;
+    FrameLayout flContainer;
+    final FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         // find the views
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        flContainer = findViewById(R.id.flContainer);
 
         // Retrieve posts from the database
         // queryPost();
@@ -87,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // Set default selection, in this case home item
+        bottomNavigationView.setSelectedItemId(R.id.itemHome);
     }
 
     // Menu icons are inflated just as they were with actionbar
@@ -99,26 +109,31 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
+        Fragment fragment = null;
         switch (item.getItemId()){
             case R.id.smiStory:
                 Toast.makeText(getApplicationContext(),"Add Story Selected",Toast.LENGTH_SHORT).show();
                 // Navigate to the PostStoryActivity
-                Intent intent = new Intent(this, PostStoryActivity.class);
-                startActivity(intent);
-                return true;
+                //Intent intent = new Intent(this, PostStoryActivity.class);
+                //startActivity(intent);
+                fragment = new PostStoryFragment();
+                break;
             case R.id.smiReel:
                 Toast.makeText(getApplicationContext(),"Reel Selected",Toast.LENGTH_SHORT).show();
-                return true;
+                fragment = new PostStoryFragment();
+                break;
             case R.id.miFavourite:
                 Toast.makeText(getApplicationContext(),"Favourite Selected",Toast.LENGTH_SHORT).show();
-                return true;
+                fragment = new PostStoryFragment();
+                break;
             case R.id.miMessage:
-                Toast.makeText(getApplicationContext(),"Message Selected",Toast.LENGTH_SHORT).show();
-                return true;
             default:
-                return super.onOptionsItemSelected(item);
+                Toast.makeText(getApplicationContext(),"Message Selected",Toast.LENGTH_SHORT).show();
+                fragment = new PostStoryFragment();
+                break;
         }
+        fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+        return true;
     }
 
     private void queryPost() {
