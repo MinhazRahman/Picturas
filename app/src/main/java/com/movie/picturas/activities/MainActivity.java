@@ -113,29 +113,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Fragment fragment = null;
-        switch (item.getItemId()){
-            case R.id.smiStory:
-                Toast.makeText(getApplicationContext(),"Add Story Selected",Toast.LENGTH_SHORT).show();
-                // Navigate to the PostStoryActivity
-                //Intent intent = new Intent(this, PostStoryActivity.class);
-                //startActivity(intent);
-                fragment = new PostStoryFragment();
-                break;
-            case R.id.smiReel:
-                Toast.makeText(getApplicationContext(),"Reel Selected",Toast.LENGTH_SHORT).show();
-                fragment = new PostsFragment();
-                break;
-            case R.id.miFavourite:
-                Toast.makeText(getApplicationContext(),"Favourite Selected",Toast.LENGTH_SHORT).show();
-                fragment = new PostsFragment();
-                break;
-            case R.id.miMessage:
-                Toast.makeText(getApplicationContext(),"Message Selected",Toast.LENGTH_SHORT).show();
-                fragment = new PostsFragment();
-                break;
-            default:
-                fragment = new PostsFragment();
-                break;
+
+        // When clicked on Add menu item
+        if (item.getItemId() == R.id.miAdd){
+            return super.onOptionsItemSelected(item);
+        }
+
+        if (item.getItemId() == R.id.smiStory) {
+            fragment = new PostStoryFragment();
+        } else {
+            fragment = new PostsFragment();
         }
         fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
         return true;
