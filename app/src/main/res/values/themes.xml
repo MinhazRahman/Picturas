@@ -31,4 +31,19 @@
         <item name="android:textStyle">normal</item>
         <item name="android:fontFamily">@font/blue_vinyl_regular</item>
     </style>
+
+    <style name="PopupMenu" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:itemBackground">@color/instagram_black</item>
+    </style>
+
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Dark">
+        <!-- changes the background of the Toolbar's popup -->
+        <item name="android:itemBackground">@color/instagram_black</item>
+
+        <!-- show the pop up menu below the toolbar-->
+        <item name="android:windowDisablePreview">true</item>
+        <item name="overlapAnchor">false</item>
+        <item name="android:dropDownVerticalOffset">5.0dp</item>
+
+    </style>
 </resources>

@@ -144,8 +144,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.smiTakePhoto:
-                Toast.makeText(getApplicationContext(),"Take Photo Selected",Toast.LENGTH_SHORT).show();
+            case R.id.smiStory:
+                Toast.makeText(getApplicationContext(),"Add Story Selected",Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.smiReel:
                 Toast.makeText(getApplicationContext(),"Reel Selected",Toast.LENGTH_SHORT).show();

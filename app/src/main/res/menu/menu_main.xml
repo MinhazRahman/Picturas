@@ -11,23 +11,18 @@
 
         <!-- submenu -->
         <menu>
-            <group
-                android:id="@+id/addSubmenu"
-                android:checkableBehavior="none"
-                android:visible="true"
-                android:menuCategory="container">
-                <item
-                    android:id="@+id/smiTakePhoto"
-                    android:icon="@drawable/ic_baseline_photo_camera_24"
-                    app:showAsAction="withText"
-                    android:title="@string/take_photo" />
+            <item
+                android:id="@+id/smiStory"
+                android:icon="@drawable/ic_baseline_post_add_24"
+                app:showAsAction="withText"
+                android:title="@string/story" />
+
                 <item
                     android:id="@+id/smiReel"
                     android:icon="@drawable/ic_baseline_video_library_24"
                     app:showAsAction="withText"
                     android:title="@string/reel" />
 
-            </group>
         </menu>
     </item>
     <item

@@ -12,4 +12,5 @@
     android:textSize = "20sp"
     android:background="@color/instagram_black"
     app:titleTextAppearance="@style/Toolbar.TitleText"
+    app:popupTheme="@style/PopupOverlay"
     app:menu="@menu/menu_main"/>
