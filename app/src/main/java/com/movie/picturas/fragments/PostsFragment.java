@@ -25,8 +25,8 @@ public class PostsFragment extends Fragment {
     public static final String TAG = "PostsFragment";
 
     RecyclerView rvPosts;
-    private PostsAdapter postsAdapter;
-    private List<Post> allPosts;
+    protected PostsAdapter postsAdapter;
+    protected List<Post> allPosts;
 
     public PostsFragment() {
         // Required empty public constructor
@@ -57,7 +57,8 @@ public class PostsFragment extends Fragment {
         queryPost();
     }
 
-    private void queryPost() {
+    // Retrieve Posts from the Parse db
+    protected void queryPost() {
         // Define the class we would like to query
         ParseQuery<Post> postParseQuery = ParseQuery.getQuery(Post.class);
 

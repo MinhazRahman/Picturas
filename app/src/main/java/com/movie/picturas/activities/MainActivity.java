@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import com.movie.picturas.R;
+import com.movie.picturas.fragments.CurrentUserPostsFragment;
 import com.movie.picturas.fragments.PostStoryFragment;
 import com.movie.picturas.fragments.PostsFragment;
 import com.movie.picturas.fragments.ProfileFragment;
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new PostsFragment();
                         break;
                     case R.id.itemSearch:
-                        fragment = new PostsFragment();
+                        fragment = new CurrentUserPostsFragment();
                         break;
                     case R.id.itemVideo:
                         fragment = new PostsFragment();
