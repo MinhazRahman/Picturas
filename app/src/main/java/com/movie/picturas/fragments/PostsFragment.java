@@ -54,12 +54,6 @@ public class PostsFragment extends Fragment {
         rvPosts.setAdapter(postsAdapter);
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Steps to use the recycler view
-        // 0. create layout for one row in the list
-        // 1. create the adapter
-        // 2. create the data source
-        // 3. set the adapter on the recycler view
-        // 4. set the layout manager on the recycler view
         queryPost();
     }
 
@@ -69,6 +63,10 @@ public class PostsFragment extends Fragment {
 
         // Include user key
         postParseQuery.include(Post.KEY_USER);
+        // Limit the number of posts
+        postParseQuery.setLimit(20);
+        // Display the most recent posts first
+        postParseQuery.addDescendingOrder(Post.KEY_CREATED_AT);
         // Execute the find asynchronously
         postParseQuery.findInBackground(new FindCallback<Post>() {
             @Override
