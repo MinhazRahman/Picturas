@@ -15,9 +15,11 @@ import android.view.ViewGroup;
 import com.movie.picturas.R;
 import com.movie.picturas.adapters.PostsAdapter;
 import com.movie.picturas.models.Post;
+import com.movie.picturas.utils.EndlessRecyclerViewScrollListener;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,7 @@ public class PostsFragment extends Fragment {
     protected PostsAdapter postsAdapter;
     protected List<Post> allPosts;
     SwipeRefreshLayout swipeContainer;
+    EndlessRecyclerViewScrollListener scrollListener;
 
     public PostsFragment() {
         // Required empty public constructor
@@ -70,11 +73,64 @@ public class PostsFragment extends Fragment {
         // initialize the list
         allPosts = new ArrayList<>();
         postsAdapter = new PostsAdapter(getContext(), allPosts);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
+        // Set the adapter and the linear layout manager to the RecyclerView
         rvPosts.setAdapter(postsAdapter);
-        rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvPosts.setLayoutManager(linearLayoutManager);
+
+        // Define the scrollListener by passing the linearLayoutManager
+        scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                Log.i(TAG,"onLoadMore" + page);
+                loadMorePosts();
+            }
+        };
+
+        // Adds the scroll listener to RecyclerView
+        rvPosts.addOnScrollListener(scrollListener);
 
         queryPost();
+    }
+
+    // this is where we will make another query to get the next page of posts
+    // and add the objects to our current list of posts
+    private void loadMorePosts() {
+
+        // Define the class we would like to query
+        ParseQuery<Post> postParseQuery = ParseQuery.getQuery(Post.class);
+
+        // Include user key
+        postParseQuery.include(Post.KEY_USER);
+        // Get the last post
+        Post lastPost = allPosts.get(allPosts.size()-1);
+
+        // Retrieve Posts made by only the current user
+        postParseQuery.whereLessThan(Post.KEY_CREATED_AT, lastPost.getCreatedAt());
+
+        // Limit the number of posts
+        postParseQuery.setLimit(20);
+        // Display the most recent posts first
+        postParseQuery.addDescendingOrder(Post.KEY_CREATED_AT);
+        // Execute the find asynchronously
+        postParseQuery.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> posts, ParseException e) {
+                if (e != null){
+                    Log.e(TAG, "ERROR while retrieving posts", e);
+                    return;
+                }
+
+                for (Post post: posts){
+                    Log.i(TAG, "Post: " + post.getDescription() + " username: " + post.getUser().getUsername());
+                }
+                // Append the new data objects to the existing set of items inside the array of items
+                // Also notify the adapter of the new items made with `notifyItemRangeInserted()`
+                allPosts.addAll(posts);
+                postsAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     // Retrieve Posts from the Parse db
