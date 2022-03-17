@@ -36,6 +36,23 @@
         android:singleLine="true"
         android:ellipsize="end"/>
 
+    <TextView
+        android:id="@+id/tvCreationTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/tvUsername"
+        android:text="Creation time"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:maxLength="18"
+        android:singleLine="true"
+        android:ellipsize="end"/>
+
+
     <ImageView
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
