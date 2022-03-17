@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.movie.picturas.R;
 import com.movie.picturas.models.Post;
+import com.movie.picturas.utils.TimeFormatter;
 import com.parse.ParseFile;
 
 import java.util.List;
@@ -49,6 +50,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
     class ViewHolder extends RecyclerView.ViewHolder{
         ImageView ivProfileImage;
         TextView tvUsername;
+        TextView tvCreationTime;
         ImageView ivImage;
         TextView tvDescription;
 
@@ -59,12 +61,14 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            tvCreationTime = itemView.findViewById(R.id.tvCreationTime);
         }
 
         public void bind(Post post) {
             // Bind the post data to the view elements
             tvUsername.setText(post.getUser().getUsername());
             tvDescription.setText(post.getDescription());
+            tvCreationTime.setText(post.getRelativeCreationTime());
 
             // load image
             ParseFile image = post.getImage();
