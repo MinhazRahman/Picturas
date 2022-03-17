@@ -6,14 +6,34 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import org.parceler.Parcel;
+
 import java.util.Date;
 
+/**
+ * Using with ORM libraries
+ * Some ORM libraries require extending the Java object with fields that Parceler is unable to serialize or deserialize.
+ * In these, cases, you should limit what fields should be analyzed in the inheritance using the @Parcel(analyze={}) decorator:
+ *
+ * @Parcel(analyze={User.class})   // add Parceler annotation here
+ * public class User extends BaseModel {
+ * }
+ *
+ * In this case only parameters from User class will be serialized avoiding any fields from BaseModel.
+* */
+
+
 @ParseClassName("Post")
+@Parcel(analyze={Post.class})
 public class Post extends ParseObject {
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_USER = "user";
     public static final String KEY_CREATED_AT = "createdAt";
+
+    // empty constructor needed by the Parceler library
+    public Post(){
+    }
 
     public String getDescription(){
         return getString(KEY_DESCRIPTION);
