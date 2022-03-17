@@ -1,9 +1,12 @@
 package com.movie.picturas.models;
 
+import com.movie.picturas.utils.TimeFormatter;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+
+import java.util.Date;
 
 @ParseClassName("Post")
 public class Post extends ParseObject {
@@ -34,5 +37,13 @@ public class Post extends ParseObject {
 
     public void setUser(ParseUser user){
         put(KEY_USER, user);
+    }
+
+    public String getRelativeCreationTime(){
+        return ". " + TimeFormatter.getTimeDifference(String.valueOf(getCreatedAt()));
+    }
+
+    public void setCreationTime(Date date){
+        put(KEY_CREATED_AT, date);
     }
 }
