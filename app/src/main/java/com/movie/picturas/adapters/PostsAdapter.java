@@ -35,6 +35,19 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
         return new ViewHolder(view);
     }
 
+    // clear() and addAll() methods are for SwipeRefreshLayout
+    // Clean all elements of the recycler
+    public void clear() {
+        posts.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items:tweets
+    public void addAll(List<Post> listTweet) {
+        posts.addAll(listTweet);
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Post post = posts.get(position);
