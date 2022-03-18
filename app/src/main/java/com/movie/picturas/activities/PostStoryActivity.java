@@ -113,8 +113,8 @@ public class PostStoryActivity extends AppCompatActivity {
                     case R.id.itemVideo:
                         Toast.makeText(PostStoryActivity.this, "Video", Toast.LENGTH_SHORT).show();
                         return true;
-                    case R.id.itemShop:
-                        Toast.makeText(PostStoryActivity.this, "Shop", Toast.LENGTH_SHORT).show();
+                    case R.id.itemPosts:
+                        Toast.makeText(PostStoryActivity.this, "Posts", Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.itemProfile:
                         Toast.makeText(PostStoryActivity.this, "Profile", Toast.LENGTH_SHORT).show();

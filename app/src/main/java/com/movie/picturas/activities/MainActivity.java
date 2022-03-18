@@ -87,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.itemVideo:
                         fragment = new PostsFragment();
                         break;
-                    case R.id.itemShop:
-                        fragment = new PostsFragment();
+                    case R.id.itemPosts:
+                        fragment = new CurrentUserPostsFragment();
                         break;
                     case R.id.itemProfile:
                         fragment = new ProfileFragment();
