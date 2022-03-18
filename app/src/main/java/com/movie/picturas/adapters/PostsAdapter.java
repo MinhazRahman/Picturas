@@ -131,6 +131,21 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
                     context.startActivity(intent);
                 }
             });
+
+            // Register click listener on ivProfileImage
+            // Tapping on a post's username or profile photo goes to that user's profile page and
+            // shows a grid view of the user's posts
+            ivProfileImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Create an Intent
+                    Intent intent = new Intent(context, UserProfileActivity.class);
+                    // Wrap Post object with Parcels.wrap()
+                    intent.putExtra("post", Parcels.wrap(post));
+                    // Launch PostDetailActivity screen
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }
