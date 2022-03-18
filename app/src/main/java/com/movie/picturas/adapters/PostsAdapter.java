@@ -2,6 +2,7 @@ package com.movie.picturas.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.movie.picturas.R;
 import com.movie.picturas.activities.PostDetailActivity;
+import com.movie.picturas.activities.UserProfileActivity;
 import com.movie.picturas.models.Post;
-import com.movie.picturas.utils.TimeFormatter;
 import com.parse.ParseFile;
 
 import org.parceler.Parcels;
@@ -109,6 +110,21 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
                 public void onClick(View view) {
                     // Create Intent object
                     Intent intent = new Intent(context, PostDetailActivity.class);
+                    // Wrap Post object with Parcels.wrap()
+                    intent.putExtra("post", Parcels.wrap(post));
+                    // Launch PostDetailActivity screen
+                    context.startActivity(intent);
+                }
+            });
+
+            // Register click listener on tvUsername
+            // Tapping on a post's username or profile photo goes to that user's profile page and
+            // shows a grid view of the user's posts
+            tvUsername.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Create an Intent
+                    Intent intent = new Intent(context, UserProfileActivity.class);
                     // Wrap Post object with Parcels.wrap()
                     intent.putExtra("post", Parcels.wrap(post));
                     // Launch PostDetailActivity screen
